@@ -1,0 +1,11 @@
+@import './variables.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: $main-font;
+}
