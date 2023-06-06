@@ -9,3 +9,28 @@
   box-sizing: border-box;
   font-family: $main-font;
 }
+
+html,
+body,
+#root,
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+#navigate {
+  position: fixed;
+  right: 2rem;
+  top: 1rem;
+  background: transparent;
+  font-size: 1rem;
+  padding: 5px 1rem;
+  border: 1px solid $maroon;
+  border-radius: 2rem;
+  color: $maroon;
+}
+
+#welcome-container {
+  width: 100%;
+  height: 100%;
+}
