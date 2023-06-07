@@ -1,9 +1,15 @@
 import './welcome.scss';
 import logo from '../../assets/logo.png';
 
-export default function Welcome() {
+interface Props {
+  welRef: React.MutableRefObject<HTMLDivElement | null>;
+}
+
+export default function Welcome({ welRef }: Props) {
   return (
-    <div id='welcome-container'>
+    <div
+      id='welcome-container'
+      ref={welRef}>
       <div id='welcome-header-container'>
         <img
           src={logo}
@@ -20,6 +26,9 @@ export default function Welcome() {
           to skincare mishaps and embrace a personalized routine that harmonizes
           with your skin's needs. Simplify your skincare journey and unlock the
           secrets to radiant, balanced skin with us.
+          <div className='btn'>
+            <span>Find out how</span>
+          </div>
         </p>
       </div>
     </div>

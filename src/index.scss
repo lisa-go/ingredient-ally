@@ -18,16 +18,29 @@ body,
   height: 100%;
 }
 
-#navigate {
+#right-header {
   position: fixed;
   right: 2rem;
   top: 1rem;
-  background: transparent;
-  font-size: 1rem;
-  padding: 5px 1rem;
-  border: 1px solid $maroon;
-  border-radius: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
   color: $maroon;
+
+  #navigate {
+    height: fit-content;
+    background: transparent;
+    font-size: 1rem;
+    padding: 5px 1rem;
+    border: 1px solid $maroon;
+    border-radius: 2rem;
+  }
+
+  #page-number {
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: 4px;
+  }
 }
 
 #welcome-container {
