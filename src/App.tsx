@@ -3,6 +3,8 @@ import Welcome from './components/Welcome/Welcome';
 import { RootState } from './redux/store';
 import { change } from './redux/slices/pageSlice';
 import { useEffect, useRef } from 'react';
+import Instructions from './components/Instructions/Instructions';
+import Inventory from './components/Inventory/Inventory';
 
 interface Page {
   name: string;
@@ -15,25 +17,34 @@ export default function App() {
 
   const welRef = useRef<HTMLDivElement | null>(null);
   const insRef = useRef<HTMLDivElement | null>(null);
+  const invRef = useRef<HTMLDivElement | null>(null);
+
   const pages: Page[] = [
     { name: 'Welcome', ref: welRef },
     { name: 'Instructions', ref: insRef },
+    { name: 'Inventory', ref: invRef },
   ];
 
-  useEffect(() => {
-    console.log(page);
+  const navigate = () => {
     if (page !== null && page !== undefined) {
       pages[page].ref.current?.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  useEffect(() => {
+    navigate();
   }, [page]);
+
+  // snap to current section if window is resized
+  window.addEventListener('resize', navigate);
 
   return (
     <div className='App'>
-      <div id='right-header'>
+      <div id={page !== 2 ? 'right-header' : 'right-header-alt'}>
         <select
           id='navigate'
           onChange={(e) => dispatch(change(+e.target.value))}
-          value={page ?? ''}>
+          value={page}>
           {pages.map((p, index) => (
             <option
               value={index}
@@ -43,16 +54,16 @@ export default function App() {
           ))}
         </select>
         <p id='page-number'>
-          {page !== null && page !== undefined
-            ? (page + 1).toLocaleString('en-US', {
-                minimumIntegerDigits: 2,
-                useGrouping: false,
-              })
-            : ''}
+          {(page + 1).toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false,
+          })}
         </p>
       </div>
 
       <Welcome welRef={welRef} />
+      <Instructions insRef={insRef} />
+      <Inventory invRef={invRef} />
     </div>
   );
 }

@@ -3,15 +3,18 @@
 $main-font: 'Poppins', sans-serif;
 $logo-font: 'Lobster';
 
+$off-white: #feffff;
+$maroon: #4e3243;
+$dark-pink: #fe8a99;
+$light-pink: #fdbdd0;
+$choco: #7f6256;
+
 @mixin logo-font {
-  background: linear-gradient(45deg, #fdbdd0, #fe8a99);
+  background: linear-gradient(45deg, $light-pink, $dark-pink);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
 }
-
-$off-white: #feffff;
-$maroon: #4e3243;
 
 @keyframes opacityChange {
   from {
