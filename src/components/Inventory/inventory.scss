@@ -2,4 +2,39 @@
 
 #inventory-container {
   background: url(../../assets/inventory-background.png);
+  background-size: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 7%;
+
+  form {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    border-radius: 6px;
+    padding: 1rem;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 3fr 1fr;
+
+    input,
+    textarea {
+      padding: 2px 5px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      grid-column: 2;
+      cursor: pointer;
+      width: fit-content;
+      padding: 0 2rem;
+      justify-self: end;
+      border: none;
+    }
+  }
 }

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import pageSlice from './slices/pageSlice';
+import inventorySlice from './slices/inventorySlice';
 
 export const store = configureStore({
   reducer: {
     page: pageSlice,
+    inventory: inventorySlice,
   },
 });
 

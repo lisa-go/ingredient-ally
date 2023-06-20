@@ -1,3 +1,5 @@
+import Form from './Form';
+import Items from './Items';
 import './inventory.scss';
 
 interface Props {
@@ -8,7 +10,8 @@ export default function Inventory({ invRef }: Props) {
     <div
       id='inventory-container'
       ref={invRef}>
-      inventory
+      <Form />
+      <Items />
     </div>
   );
 }
