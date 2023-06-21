@@ -105,6 +105,25 @@
           flex: 1;
           overflow-y: auto;
         }
+
+        svg {
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 35px;
+          height: 35px;
+          padding: 8px;
+          border-top-right-radius: 6px;
+          border-bottom-left-radius: 6px;
+          transition: 500ms;
+          color: $maroon;
+
+          &:hover {
+            background-color: rgb(223, 100, 100);
+            color: $off-white;
+          }
+        }
       }
     }
   }

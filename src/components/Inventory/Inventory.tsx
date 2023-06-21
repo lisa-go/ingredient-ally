@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Form from './Form';
 import Items from './Items';
 import './inventory.scss';
@@ -12,7 +12,7 @@ interface Props {
 
 export default function Inventory({ invRef }: Props) {
   const proRef = useRef<HTMLDivElement | null>(null);
-  const inventory = useSelector((state: RootState) => state.inventory.list);
+  const list = useSelector((state: RootState) => state.inventory.list);
 
   function scroll(direction: string) {
     if (proRef.current) {
@@ -23,11 +23,6 @@ export default function Inventory({ invRef }: Props) {
       }
     }
   }
-  useEffect(() => {
-    console.log(proRef.current?.clientWidth);
-    console.log(proRef.current?.scrollWidth);
-    console.log(inventory);
-  }, [proRef.current]);
 
   return (
     <div
@@ -35,9 +30,9 @@ export default function Inventory({ invRef }: Props) {
       ref={invRef}>
       <Form />
       <div id='product-scroll-container'>
-        {inventory &&
+        {list &&
         proRef.current?.clientWidth &&
-        inventory.length * 300 >= proRef.current?.clientWidth ? (
+        list.length * 300 >= proRef.current?.clientWidth ? (
           <button onClick={() => scroll('left')}>
             <AiOutlineCaretLeft size={40} />
           </button>
@@ -47,9 +42,9 @@ export default function Inventory({ invRef }: Props) {
           </button>
         )}
         <Items proRef={proRef} />
-        {inventory &&
+        {list &&
         proRef.current?.clientWidth &&
-        inventory.length * 300 >= proRef.current?.clientWidth ? (
+        list.length * 300 >= proRef.current?.clientWidth ? (
           <button onClick={() => scroll('right')}>
             <AiOutlineCaretRight size={40} />
           </button>
