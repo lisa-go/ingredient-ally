@@ -12,10 +12,13 @@ export default function Form() {
     e.preventDefault();
     if (itemName && ingredients)
       dispatch(add({ name: itemName, ingredients: ingredients }));
+    /* uncomment later to reset form on submit
+    (e.target as HTMLFormElement).reset(); */
   }
 
   return (
     <form onSubmit={(e) => submitForm(e)}>
+      <h1>add your skincare products</h1>
       <label htmlFor='item-name'>Item Name</label>
       <input
         id='item-name'

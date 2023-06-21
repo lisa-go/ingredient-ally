@@ -16,6 +16,12 @@ $choco: #7f6256;
   -webkit-background-clip: text;
 }
 
+@mixin glass-bg {
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(5px);
+  border-radius: 6px;
+}
+
 @keyframes opacityChange {
   from {
     opacity: 0;

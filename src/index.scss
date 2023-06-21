@@ -27,6 +27,7 @@ body,
   gap: 2rem;
   align-items: center;
   color: $choco;
+  z-index: 999;
 
   #navigate {
     height: fit-content;
