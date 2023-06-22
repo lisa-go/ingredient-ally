@@ -11,6 +11,7 @@ export default function Instructions({ insRef }: Props) {
   return (
     <div
       id='instructions-container'
+      className='section-container'
       ref={insRef}>
       Instructions
       <div

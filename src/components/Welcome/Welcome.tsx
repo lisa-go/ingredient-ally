@@ -13,6 +13,7 @@ export default function Welcome({ welRef }: Props) {
   return (
     <div
       id='welcome-container'
+      className='section-container'
       ref={welRef}>
       <div id='welcome-header-container'>
         <img

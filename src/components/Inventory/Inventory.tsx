@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Form from './Form';
 import Items from './Items';
 import './inventory.scss';
@@ -7,6 +7,7 @@ import { BiSprayCan } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { generate } from '../../redux/slices/inventorySlice';
+import { change } from '../../redux/slices/pageSlice';
 
 interface Props {
   invRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -30,13 +31,17 @@ export default function Inventory({ invRef }: Props) {
   return (
     <div
       id='inventory-container'
+      className='section-container'
       ref={invRef}>
       <Form />
 
       {list && list.length > 1 ? (
         <button
           id='generate-btn'
-          onClick={() => dispatch(generate())}>
+          onClick={() => {
+            dispatch(generate());
+            dispatch(change(3));
+          }}>
           <BiSprayCan size={30} />
           <span>Generate Results</span>
         </button>

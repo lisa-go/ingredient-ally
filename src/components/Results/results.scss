@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+#results-container {
+  background-color: #a1d0ca;
+  display: flex;
+
+  img {
+    width: 35%;
+    height: auto;
+    align-self: flex-end;
+  }
+
+  #results {
+    padding-top: 5rem;
+    flex: 1;
+
+    h1 {
+      text-align: center;
+    }
+  }
+}

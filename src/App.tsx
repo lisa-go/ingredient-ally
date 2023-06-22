@@ -5,6 +5,7 @@ import { change } from './redux/slices/pageSlice';
 import { useEffect, useRef } from 'react';
 import Instructions from './components/Instructions/Instructions';
 import Inventory from './components/Inventory/Inventory';
+import Results from './components/Results/Results';
 
 interface Page {
   name: string;
@@ -18,11 +19,13 @@ export default function App() {
   const welRef = useRef<HTMLDivElement | null>(null);
   const insRef = useRef<HTMLDivElement | null>(null);
   const invRef = useRef<HTMLDivElement | null>(null);
+  const resRef = useRef<HTMLDivElement | null>(null);
 
   const pages: Page[] = [
     { name: 'Welcome', ref: welRef },
     { name: 'Instructions', ref: insRef },
     { name: 'Inventory', ref: invRef },
+    { name: 'Results', ref: resRef },
   ];
 
   const navigate = () => {
@@ -64,6 +67,7 @@ export default function App() {
       <Welcome welRef={welRef} />
       <Instructions insRef={insRef} />
       <Inventory invRef={invRef} />
+      <Results resRef={resRef} />
     </div>
   );
 }

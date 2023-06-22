@@ -74,9 +74,7 @@ body,
   overflow-x: hidden;
 }
 
-#welcome-container,
-#instructions-container,
-#inventory-container {
+.section-container {
   min-width: 100%;
   height: 100%;
 }
