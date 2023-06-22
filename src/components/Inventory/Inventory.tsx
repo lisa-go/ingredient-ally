@@ -1,10 +1,12 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Form from './Form';
 import Items from './Items';
 import './inventory.scss';
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
+import { BiSprayCan } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { generate } from '../../redux/slices/inventorySlice';
 
 interface Props {
   invRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -13,6 +15,7 @@ interface Props {
 export default function Inventory({ invRef }: Props) {
   const proRef = useRef<HTMLDivElement | null>(null);
   const list = useSelector((state: RootState) => state.inventory.list);
+  const dispatch = useDispatch();
 
   function scroll(direction: string) {
     if (proRef.current) {
@@ -29,6 +32,23 @@ export default function Inventory({ invRef }: Props) {
       id='inventory-container'
       ref={invRef}>
       <Form />
+
+      {list && list.length > 1 ? (
+        <button
+          id='generate-btn'
+          onClick={() => dispatch(generate())}>
+          <BiSprayCan size={30} />
+          <span>Generate Results</span>
+        </button>
+      ) : (
+        <button
+          id='generate-btn'
+          disabled>
+          <BiSprayCan size={30} />
+          <span>Generate Results</span>
+        </button>
+      )}
+
       <div id='product-scroll-container'>
         {list &&
         proRef.current?.clientWidth &&

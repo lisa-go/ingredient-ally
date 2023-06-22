@@ -25,6 +25,7 @@ export default function Form() {
         type='text'
         onChange={(e) => setItemName(e.target.value)}
         required
+        placeholder='eg. COSRX - The Retinol 0.5 Oil'
       />
 
       <label htmlFor='item-ingredients'>Ingredients</label>
@@ -32,7 +33,9 @@ export default function Form() {
         name='item-ingredients'
         id='item-ingredients'
         onChange={(e) => setIngredients(e.target.value.split(','))}
-        required></textarea>
+        required
+        placeholder='separate ingredients with commas, eg. Squalane, Glycine Soja (Soybean) Oil, Di-C12-13 Alkyl Malate, Retinol, Caprylic/Capric Triglyceride, BHT, Tocotrienols, Tocopherol, Elaeis Guineensis (Palm) Oil, Hydroxymethoxyphenyl Decanone'
+      />
 
       <button
         type='submit'

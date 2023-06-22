@@ -8,6 +8,9 @@ export const ingredients: Ingredient[] = [
     name: 'retinol',
     avoid: [
       'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
       'benzoyl peroxide',
       'alpha hydroxy acid',
       'lactic acid',
@@ -31,6 +34,9 @@ export const ingredients: Ingredient[] = [
     name: 'retinaldehyde',
     avoid: [
       'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
       'benzoyl peroxide',
       'alpha hydroxy acid',
       'lactic acid',
@@ -54,6 +60,9 @@ export const ingredients: Ingredient[] = [
     name: 'retinyl esters',
     avoid: [
       'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
       'benzoyl peroxide',
       'alpha hydroxy acid',
       'lactic acid',
@@ -77,6 +86,9 @@ export const ingredients: Ingredient[] = [
     name: 'tretinoin',
     avoid: [
       'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
       'benzoyl peroxide',
       'alpha hydroxy acid',
       'lactic acid',
@@ -100,6 +112,9 @@ export const ingredients: Ingredient[] = [
     name: 'adapalene',
     avoid: [
       'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
       'benzoyl peroxide',
       'alpha hydroxy acid',
       'lactic acid',
@@ -123,6 +138,9 @@ export const ingredients: Ingredient[] = [
     name: 'tazarotene',
     avoid: [
       'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
       'benzoyl peroxide',
       'alpha hydroxy acid',
       'lactic acid',
@@ -146,6 +164,9 @@ export const ingredients: Ingredient[] = [
     name: 'trifarotene',
     avoid: [
       'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
       'benzoyl peroxide',
       'alpha hydroxy acid',
       'lactic acid',
@@ -179,7 +200,12 @@ export const ingredients: Ingredient[] = [
   },
   {
     name: 'niacinamide',
-    avoid: ['vitamin c'],
+    avoid: [
+      'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
+    ],
   },
   {
     name: 'alpha hydroxy acid',
@@ -291,6 +317,11 @@ export const ingredients: Ingredient[] = [
   },
   {
     name: 'copper peptides',
-    avoid: ['vitamin c'],
+    avoid: [
+      'vitamin c',
+      'l-ascorbic acid',
+      'ascorbic acid',
+      'ascorbyl glucoside',
+    ],
   },
 ];

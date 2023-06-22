@@ -30,12 +30,8 @@ export default function Items({ proRef }: Props) {
             key={index}>
             <h1>item {index + 1}</h1>
             <h2>{item.name}</h2>
-            <p>{item.ingredients.join(',')}</p>
-            <RxCross1
-              onClick={() => {
-                deleteItem(index);
-              }}
-            />
+            <p>{item.ingredients.join(', ')}</p>
+            <RxCross1 onClick={() => deleteItem(index)} />
           </div>
         ))}
     </div>
