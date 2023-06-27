@@ -1,9 +1,9 @@
-interface Ingredient {
+export interface iIngredient {
   name: string;
   avoid: string[];
 }
 
-export const ingredients: Ingredient[] = [
+export const ingredients: iIngredient[] = [
   {
     name: 'retinol',
     avoid: [

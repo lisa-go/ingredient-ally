@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { add } from '../../redux/slices/inventorySlice';
 
@@ -7,13 +7,30 @@ export default function Form() {
 
   const [itemName, setItemName] = useState<string>();
   const [ingredients, setIngredients] = useState<string[]>();
+  const [processedIngredients, setProcessedIngredients] = useState<string[]>();
 
   function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (itemName && ingredients)
-      dispatch(add({ name: itemName, ingredients: ingredients }));
+      dispatch(add({ name: itemName, ingredients: processedIngredients }));
     (e.target as HTMLFormElement).reset();
   }
+
+  function removeFrontSpace(str: string) {
+    let temp = str.split('');
+    while (temp[0] === ' ') temp.shift();
+    return temp.join('');
+  }
+
+  useEffect(() => {
+    if (ingredients) {
+      let temp: string[] = [];
+      for (let i = 0; i < ingredients.length; i++) {
+        temp.push(removeFrontSpace(ingredients[i]));
+      }
+      setProcessedIngredients(temp);
+    }
+  }, [ingredients]);
 
   return (
     <form onSubmit={(e) => submitForm(e)}>

@@ -128,10 +128,6 @@
     }
   }
 
-  .popout {
-    animation: 1s 0s 1 popout;
-  }
-
   #generate-btn {
     @include glass-bg;
     margin-top: 1rem;
