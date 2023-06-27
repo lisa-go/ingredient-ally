@@ -16,70 +16,91 @@ interface Props {
 }
 
 interface iResult {
-  product1: String;
-  product2: String;
-  ingredient1: String[];
-  ingredient2: String[];
+  product1: string;
+  product2: string;
+  ingredient1: string[];
+  ingredient2: string[];
 }
 
 export default function Results({ resRef }: Props) {
   const { process, list } = useSelector((state: RootState) => state.inventory);
-  const [result, setResult] = useState<iResult[] | undefined>([]);
+  const [result, setResult] = useState<iResult[] | undefined | null>([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(result);
-  }, [result]);
-
-  useEffect(() => {
     if (list && process === true) {
-      /* reset results */
       setResult(undefined);
       let tempResult: iResult[] = [];
+
+      const findProblemMatchesHelper = (item: Item, ingredient: string) => {
+        const index = ingredients.findIndex(
+          (element) => element.name === ingredient
+        );
+        const problemIngredients = ingredients[index].avoid;
+        const matches: string[] = [];
+
+        for (let c = 0; c < item.ingredients.length; c++) {
+          for (let d = 0; d < problemIngredients.length; d++) {
+            if (item.ingredients[c].toLowerCase() === problemIngredients[d]) {
+              matches.push(problemIngredients[d]);
+            }
+          }
+        }
+        return matches;
+      };
+
       for (let i = 0; i < list.length; i++) {
-        for (let j = i + 1; j < list.length; j++) {
-          /* checking if item 1 has any problem ingredients, then checking other items against that problem ingredient */
-          let itemOneProblem = findProblemIngredient(list[i], ingredients);
-          if (itemOneProblem.length >= 1) {
-            for (let k = 0; k < itemOneProblem.length; k++) {
-              for (let l = 0; l < list.length; l++) {
-                if (l !== i) {
-                  let problemMatchesOne = findProblemMatches(
-                    itemOneProblem[k],
-                    list[l],
-                    ingredients
-                  );
-                  if (problemMatchesOne.length >= 1) {
-                    tempResult.push({
-                      product1: list[i].name,
-                      product2: list[l].name,
-                      ingredient1: itemOneProblem,
-                      ingredient2: problemMatchesOne,
-                    });
-                  }
+        const itemOneProblem = findProblemIngredient(list[i], ingredients);
+
+        if (itemOneProblem.length >= 1) {
+          for (let k = 0; k < itemOneProblem.length; k++) {
+            for (let l = 0; l < list.length; l++) {
+              if (l !== i) {
+                const problemMatchesOne = findProblemMatchesHelper(
+                  list[l],
+                  itemOneProblem[k]
+                );
+                const entry = {
+                  product1: list[i].name,
+                  product2: list[l].name,
+                  ingredient1: itemOneProblem,
+                  ingredient2: problemMatchesOne,
+                };
+
+                if (
+                  problemMatchesOne.length >= 1 &&
+                  !tempResult.some((element) => areResultsEqual(element, entry))
+                ) {
+                  tempResult.push(entry);
                 }
               }
             }
-          } else {
-            /* checking item 2 */
-            let itemTwoProblem = findProblemIngredient(list[j], ingredients);
-            if (itemTwoProblem.length >= 1) {
-              for (let m = 0; m < itemTwoProblem.length; m++) {
-                for (let n = 0; n < list.length; n++) {
-                  if (n !== j) {
-                    let problemMatchesTwo = findProblemMatches(
-                      itemTwoProblem[m],
-                      list[n],
-                      ingredients
-                    );
-                    if (problemMatchesTwo.length >= 1) {
-                      tempResult.push({
-                        product1: list[j].name,
-                        product2: list[n].name,
-                        ingredient1: itemTwoProblem,
-                        ingredient2: problemMatchesTwo,
-                      });
-                    }
+          }
+        } else {
+          const itemTwoProblem = findProblemIngredient(list[i], ingredients);
+
+          if (itemTwoProblem.length >= 1) {
+            for (let m = 0; m < itemTwoProblem.length; m++) {
+              for (let n = 0; n < list.length; n++) {
+                if (n !== i) {
+                  const problemMatchesTwo = findProblemMatchesHelper(
+                    list[n],
+                    itemTwoProblem[m]
+                  );
+                  const entry = {
+                    product1: list[i].name,
+                    product2: list[n].name,
+                    ingredient1: itemTwoProblem,
+                    ingredient2: problemMatchesTwo,
+                  };
+
+                  if (
+                    problemMatchesTwo.length >= 1 &&
+                    !tempResult.some((element) =>
+                      areResultsEqual(element, entry)
+                    )
+                  ) {
+                    tempResult.push(entry);
                   }
                 }
               }
@@ -87,14 +108,15 @@ export default function Results({ resRef }: Props) {
           }
         }
       }
-      let removeDuplicate = Array.from(new Set(tempResult));
-      setResult(removeDuplicate);
+      if (tempResult.length) setResult(tempResult);
+      else setResult(null);
       dispatch(completeGenerate());
     }
   }, [process]);
 
   function findProblemIngredient(item: Item, array: iIngredient[]) {
-    let problem: string[] = [];
+    const problem: string[] = [];
+
     for (let a = 0; a < item.ingredients.length; a++) {
       for (let b = 0; b < array.length; b++) {
         if (item.ingredients[a].toLowerCase() === array[b].name) {
@@ -105,26 +127,25 @@ export default function Results({ resRef }: Props) {
     return problem;
   }
 
-  function findProblemMatches(
-    ingredient: string,
-    item: Item,
-    array: iIngredient[]
-  ) {
-    let matches: string[] = [];
-
-    let index: number = array.findIndex(
-      (element) => element.name === ingredient
+  function areResultsEqual(result1: iResult, result2: iResult) {
+    return (
+      result1.product1 === result2.product1 &&
+      result1.product2 === result2.product2 &&
+      arraysEqual(result1.ingredient1, result2.ingredient1) &&
+      arraysEqual(result1.ingredient2, result2.ingredient2)
     );
-    let problemIngredients: string[] = array[index].avoid;
+  }
 
-    for (let c = 0; c < item.ingredients.length; c++) {
-      for (let d = 0; d < problemIngredients.length; d++) {
-        if (item.ingredients[c].toLowerCase() === problemIngredients[d]) {
-          matches.push(problemIngredients[d]);
-        }
+  function arraysEqual(arr1: string[], arr2: string[]) {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
       }
     }
-    return matches;
+    return true;
   }
 
   return (
@@ -138,27 +159,14 @@ export default function Results({ resRef }: Props) {
       />
 
       <div id='results'>
-        <button
-          id='generate-btn'
-          onClick={() => dispatch(generate())}>
-          <BiSprayCan size={30} />
-          <h1>Generate your results</h1>
-        </button>
         {list && list.length > 1 ? (
-          result ? (
+          result && (
             <h1>
               {process === true ? 'Generating Your Results...' : 'Your Results'}
             </h1>
-          ) : (
-            <button
-              id='generate-btn'
-              onClick={() => dispatch(generate())}>
-              <BiSprayCan size={30} />
-              <h1>Generate your results</h1>
-            </button>
           )
         ) : (
-          <h1>Go back and enter in more items!</h1>
+          <h1>Go back and enter more items!</h1>
         )}
 
         <div id='result-list-container'>
@@ -181,9 +189,9 @@ export default function Results({ resRef }: Props) {
               );
             })}
 
-          {/*           {result && result.length === 0 && (
+          {result === null && list && list.length >= 2 && (
             <h1>All good to go - your products can be used together!</h1>
-          )} */}
+          )}
         </div>
       </div>
     </div>
