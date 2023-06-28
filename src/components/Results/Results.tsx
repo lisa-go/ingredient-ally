@@ -20,7 +20,7 @@ interface iResult {
 
 export default function Results({ resRef }: Props) {
   const { process, list } = useSelector((state: RootState) => state.inventory);
-  const [result, setResult] = useState<iResult[] | undefined | null>([]);
+  const [result, setResult] = useState<iResult[] | undefined | null>(undefined);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -155,7 +155,7 @@ export default function Results({ resRef }: Props) {
       />
 
       <div id='results'>
-        {list && list.length > 1 && (
+        {result && list && list.length > 1 && (
           <h1>
             {process === true ? 'Generating Your Results...' : 'Your Results'}
           </h1>
@@ -169,6 +169,17 @@ export default function Results({ resRef }: Props) {
               <span>Go back</span>
             </button>
             <h1>and enter more items!</h1>
+          </div>
+        )}
+
+        {result === undefined && (
+          <div id='result-insufficient'>
+            <button
+              className='btn'
+              onClick={() => dispatch(change(2))}>
+              <span>Go back</span>
+            </button>
+            <h1>and generate!</h1>
           </div>
         )}
 
