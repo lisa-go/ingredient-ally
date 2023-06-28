@@ -4,12 +4,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { iIngredient, ingredients } from '../../ingredients';
-import { BiSprayCan } from 'react-icons/bi';
-import {
-  Item,
-  completeGenerate,
-  generate,
-} from '../../redux/slices/inventorySlice';
+import { Item, completeGenerate } from '../../redux/slices/inventorySlice';
+import { change } from '../../redux/slices/pageSlice';
 
 interface Props {
   resRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -108,8 +104,8 @@ export default function Results({ resRef }: Props) {
           }
         }
       }
-      if (tempResult.length) setResult(tempResult);
-      else setResult(null);
+      if (tempResult.length >= 1) setResult(tempResult);
+      else if (tempResult.length === 0) setResult(null);
       dispatch(completeGenerate());
     }
   }, [process]);
@@ -119,7 +115,7 @@ export default function Results({ resRef }: Props) {
 
     for (let a = 0; a < item.ingredients.length; a++) {
       for (let b = 0; b < array.length; b++) {
-        if (item.ingredients[a].toLowerCase() === array[b].name) {
+        if (item.ingredients[a].toLowerCase().includes(array[b].name)) {
           problem.push(array[b].name);
         }
       }
@@ -159,17 +155,31 @@ export default function Results({ resRef }: Props) {
       />
 
       <div id='results'>
-        {list && list.length > 1 ? (
-          result && (
-            <h1>
-              {process === true ? 'Generating Your Results...' : 'Your Results'}
-            </h1>
-          )
-        ) : (
-          <h1>Go back and enter more items!</h1>
+        {list && list.length > 1 && (
+          <h1>
+            {process === true ? 'Generating Your Results...' : 'Your Results'}
+          </h1>
+        )}
+
+        {list && list.length <= 1 && (
+          <div id='result-insufficient'>
+            <button
+              className='btn'
+              onClick={() => dispatch(change(2))}>
+              <span>Go back</span>
+            </button>
+            <h1>and enter more items!</h1>
+          </div>
         )}
 
         <div id='result-list-container'>
+          {result && result.length >= 1 && (
+            <div className='result-header'>
+              <h2>Products</h2>
+              <h2>Ingredients</h2>
+            </div>
+          )}
+
           {result &&
             result.length >= 1 &&
             result.map((res, index) => {
@@ -183,7 +193,7 @@ export default function Results({ resRef }: Props) {
                   </div>
 
                   <span>
-                    {res.ingredient1} & {res.ingredient2}
+                    {res.ingredient1.join(', ')} & {res.ingredient2}
                   </span>
                 </div>
               );
