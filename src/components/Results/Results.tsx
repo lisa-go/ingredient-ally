@@ -6,6 +6,7 @@ import { RootState } from '../../redux/store';
 import { iIngredient, ingredients } from '../../ingredients';
 import { Item, completeGenerate } from '../../redux/slices/inventorySlice';
 import { change } from '../../redux/slices/pageSlice';
+import { TbCircleNumber1, TbCircleNumber2 } from 'react-icons/tb';
 
 interface Props {
   resRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -172,7 +173,7 @@ export default function Results({ resRef }: Props) {
           </div>
         )}
 
-        {result === undefined && (
+        {result === undefined && list && list.length >= 2 && (
           <div id='result-insufficient'>
             <button
               className='btn'
@@ -183,14 +184,13 @@ export default function Results({ resRef }: Props) {
           </div>
         )}
 
+        {result && result.length >= 1 && (
+          <div className='result-header'>
+            <h2>Products</h2>
+            <h2>Ingredients</h2>
+          </div>
+        )}
         <div id='result-list-container'>
-          {result && result.length >= 1 && (
-            <div className='result-header'>
-              <h2>Products</h2>
-              <h2>Ingredients</h2>
-            </div>
-          )}
-
           {result &&
             result.length >= 1 &&
             result.map((res, index) => {
@@ -199,11 +199,15 @@ export default function Results({ resRef }: Props) {
                   className='result-item'
                   key={index}>
                   <div className='product-names'>
-                    <span>{res.product1}</span>
-                    <span>{res.product2}</span>
+                    <span>
+                      <TbCircleNumber1 size={20} /> {res.product1}
+                    </span>
+                    <span>
+                      <TbCircleNumber2 size={20} /> {res.product2}
+                    </span>
                   </div>
 
-                  <span>
+                  <span className='ingredient-names'>
                     {res.ingredient1.join(', ')} & {res.ingredient2}
                   </span>
                 </div>
