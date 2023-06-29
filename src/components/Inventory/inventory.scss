@@ -107,6 +107,7 @@
         p {
           flex: 1;
           overflow-y: auto;
+          word-wrap: break-word;
         }
 
         svg {
@@ -175,5 +176,101 @@
   }
   100% {
     color: #e1e7a5;
+  }
+}
+
+@media (orientation: portrait) {
+  #inventory-container {
+    background-size: 80%;
+    padding-top: 10%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #inventory-container {
+    background-size: 100%;
+    padding-top: 4rem;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      h1 {
+        font-size: 1.15rem;
+      }
+
+      label {
+        font-size: 0.9rem;
+      }
+
+      button {
+        margin-top: 5px;
+
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    #product-scroll-container {
+      button {
+        width: 8%;
+
+        svg {
+          width: 100%;
+        }
+      }
+
+      #inventory-list-container {
+        margin: 0 4px;
+
+        #inventory-product-container {
+          min-width: 280px;
+          width: 280px;
+          height: 300px;
+
+          h1 {
+            font-size: 0.9rem;
+          }
+
+          h2 {
+            font-size: 1.1rem;
+            color: $dark-pink;
+          }
+
+          p {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  #inventory-container {
+    form {
+      h1 {
+        font-size: 1rem;
+      }
+
+      label {
+        font-size: 0.85rem;
+      }
+
+      button span {
+        font-size: 0.9rem;
+      }
+    }
+
+    #product-scroll-container
+      #inventory-list-container
+      #inventory-product-container {
+      min-width: 220px;
+      width: 220px;
+      height: 300px;
+      padding: 1rem;
+    }
   }
 }
