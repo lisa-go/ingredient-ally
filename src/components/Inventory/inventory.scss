@@ -57,11 +57,12 @@
       background: none;
       border: none;
       transition: 500ms;
+      color: $choco;
 
       &:hover {
         backdrop-filter: blur(5px);
-        background-color: rgba(255, 255, 255, 0.4);
-        color: $choco;
+        background-color: rgba($color: $light-pink, $alpha: 0.4);
+        color: $dark-pink;
       }
 
       &:disabled {

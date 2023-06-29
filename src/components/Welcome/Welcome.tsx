@@ -1,7 +1,7 @@
 import './welcome.scss';
-import logo from '../../assets/logo.png';
 import { useDispatch } from 'react-redux';
 import { change } from '../../redux/slices/pageSlice';
+import logo from '../../assets/logo.png';
 
 interface Props {
   welRef: React.MutableRefObject<HTMLDivElement | null>;

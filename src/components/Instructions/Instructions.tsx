@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './instructions.scss';
 import { change } from '../../redux/slices/pageSlice';
@@ -7,7 +8,6 @@ import img3 from '../../assets/instructions-3.png';
 import img4 from '../../assets/instructions-4.png';
 import img5 from '../../assets/instructions-5.png';
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai';
-import { useState } from 'react';
 
 interface Props {
   insRef: React.MutableRefObject<HTMLDivElement | null>;

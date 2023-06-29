@@ -1,13 +1,13 @@
-import { useRef } from 'react';
-import Form from './Form';
-import Items from './Items';
 import './inventory.scss';
-import { AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai';
-import { BiSprayCan } from 'react-icons/bi';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { generate } from '../../redux/slices/inventorySlice';
 import { change } from '../../redux/slices/pageSlice';
+import Form from './Form';
+import Items from './Items';
+import { AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai';
+import { BiSprayCan } from 'react-icons/bi';
 
 interface Props {
   invRef: React.MutableRefObject<HTMLDivElement | null>;

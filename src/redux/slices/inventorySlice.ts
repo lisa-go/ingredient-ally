@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface Item {
   name: string;
-  ingredients: string[];
+  ingredients: string[] | undefined;
 }
 
 interface InventoryState {

@@ -1,12 +1,12 @@
 import './results.scss';
-import resImg from '../../assets/results-background.png';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { iIngredient, ingredients } from '../../ingredients';
 import { Item, completeGenerate } from '../../redux/slices/inventorySlice';
+import { iIngredient, ingredients } from '../../ingredients';
 import { change } from '../../redux/slices/pageSlice';
-import { TbCircleNumber1, TbCircleNumber2 } from 'react-icons/tb';
+import resImg from '../../assets/results-background.png';
+import { TbRosetteNumber1, TbRosetteNumber2 } from 'react-icons/tb';
 
 interface Props {
   resRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -36,10 +36,12 @@ export default function Results({ resRef }: Props) {
         const problemIngredients = ingredients[index].avoid;
         const matches: string[] = [];
 
-        for (let c = 0; c < item.ingredients.length; c++) {
-          for (let d = 0; d < problemIngredients.length; d++) {
-            if (item.ingredients[c].toLowerCase() === problemIngredients[d]) {
-              matches.push(problemIngredients[d]);
+        if (item.ingredients) {
+          for (let c = 0; c < item.ingredients.length; c++) {
+            for (let d = 0; d < problemIngredients.length; d++) {
+              if (item.ingredients[c].toLowerCase() === problemIngredients[d]) {
+                matches.push(problemIngredients[d]);
+              }
             }
           }
         }
@@ -114,10 +116,12 @@ export default function Results({ resRef }: Props) {
   function findProblemIngredient(item: Item, array: iIngredient[]) {
     const problem: string[] = [];
 
-    for (let a = 0; a < item.ingredients.length; a++) {
-      for (let b = 0; b < array.length; b++) {
-        if (item.ingredients[a].toLowerCase().includes(array[b].name)) {
-          problem.push(array[b].name);
+    if (item.ingredients) {
+      for (let a = 0; a < item.ingredients.length; a++) {
+        for (let b = 0; b < array.length; b++) {
+          if (item.ingredients[a].toLowerCase().includes(array[b].name)) {
+            problem.push(array[b].name);
+          }
         }
       }
     }
@@ -200,10 +204,10 @@ export default function Results({ resRef }: Props) {
                   key={index}>
                   <div className='product-names'>
                     <span>
-                      <TbCircleNumber1 size={20} /> {res.product1}
+                      <TbRosetteNumber1 size={22} /> {res.product1}
                     </span>
                     <span>
-                      <TbCircleNumber2 size={20} /> {res.product2}
+                      <TbRosetteNumber2 size={22} /> {res.product2}
                     </span>
                   </div>
 

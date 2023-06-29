@@ -75,6 +75,10 @@ body,
   overflow-x: hidden;
 }
 
+img {
+  pointer-events: none;
+}
+
 .section-container {
   min-width: 100%;
   height: 100%;

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { RxCross1 } from 'react-icons/rx';
 import { change } from '../../redux/slices/inventorySlice';
+import { RxCross1 } from 'react-icons/rx';
 
 interface Props {
   proRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -30,7 +30,7 @@ export default function Items({ proRef }: Props) {
             key={index}>
             <h1>item {index + 1}</h1>
             <h2>{item.name}</h2>
-            <p>{item.ingredients.join(', ')}</p>
+            <p>{item.ingredients?.join(', ')}</p>
             <RxCross1 onClick={() => deleteItem(index)} />
           </div>
         ))}

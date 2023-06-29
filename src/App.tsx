@@ -1,8 +1,8 @@
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Welcome from './components/Welcome/Welcome';
 import { RootState } from './redux/store';
 import { change } from './redux/slices/pageSlice';
-import { useEffect, useRef } from 'react';
+import Welcome from './components/Welcome/Welcome';
 import Instructions from './components/Instructions/Instructions';
 import Inventory from './components/Inventory/Inventory';
 import Results from './components/Results/Results';
