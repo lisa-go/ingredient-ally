@@ -27,6 +27,11 @@
         cursor: auto;
         opacity: 0;
       }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+        color: $dark-pink;
+      }
     }
 
     #instructions-content-container {
@@ -58,5 +63,57 @@
 
   .btn {
     margin-right: 15%;
+  }
+}
+
+@media (orientation: portrait) {
+  #instructions-container #instructions-slide-container {
+    height: 70%;
+
+    button {
+      min-width: 10%;
+    }
+
+    #instructions-content-container {
+      padding: 1rem;
+
+      p {
+        padding: 1rem;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #instructions-container {
+    #instructions-slide-container {
+      button {
+        position: absolute;
+        bottom: 0;
+      }
+
+      button:first-of-type {
+        left: 0;
+      }
+
+      button:nth-of-type(2) {
+        right: 0;
+      }
+
+      #instructions-content-container {
+        padding: 0;
+
+        p {
+          flex: 1;
+          padding: 1rem;
+          padding-bottom: 2.25rem;
+          font-size: 1rem;
+        }
+      }
+    }
+    .btn span {
+      font-size: 1rem;
+    }
   }
 }
