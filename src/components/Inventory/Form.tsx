@@ -42,7 +42,7 @@ export default function Form() {
         type='text'
         onChange={(e) => setItemName(e.target.value)}
         required
-        placeholder='eg. COSRX - The Retinol 0.5 Oil'
+        placeholder='eg. SK-II - Facial Treatment Essence'
       />
 
       <label htmlFor='item-ingredients'>Ingredients</label>
@@ -51,7 +51,7 @@ export default function Form() {
         id='item-ingredients'
         onChange={(e) => setIngredients(e.target.value.split(','))}
         required
-        placeholder='separate ingredients with commas, eg. Squalane, Glycine Soja (Soybean) Oil, Di-C12-13 Alkyl Malate, Retinol, Caprylic/Capric Triglyceride, BHT, Tocotrienols, Tocopherol, Elaeis Guineensis (Palm) Oil, Hydroxymethoxyphenyl Decanone'
+        placeholder='separate ingredients with commas, eg. Galactomyces Ferment Filtrate, Butylene Glycol, Pentylene Glycol, Water, Sodium Benzoate, Methylparaben, Sorbic Acid'
       />
 
       <button
