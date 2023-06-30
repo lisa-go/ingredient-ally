@@ -43,7 +43,7 @@ export default function App() {
 
   return (
     <div className='App'>
-      <div id={page !== 2 ? 'right-header' : 'right-header-alt'}>
+      <div id='right-header'>
         <select
           id='navigate'
           onChange={(e) => dispatch(change(+e.target.value))}

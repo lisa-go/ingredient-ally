@@ -32,3 +32,21 @@ $choco: #7f6256;
     opacity: 1;
   }
 }
+
+@keyframes changecolor {
+  0% {
+    color: #97d1e6;
+  }
+  25% {
+    color: #c9b5e9;
+  }
+  50% {
+    color: #e1abd7;
+  }
+  75% {
+    color: #98e5a5;
+  }
+  100% {
+    color: #e1e7a5;
+  }
+}
