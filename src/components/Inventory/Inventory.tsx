@@ -57,12 +57,20 @@ export default function Inventory({ invRef }: Props) {
           </button>
         </div>
       ) : (
-        <button
-          id='generate-btn'
-          disabled>
-          <BiSprayCan size={30} />
-          <span>Generate Results</span>
-        </button>
+        <div id='inventory-btn-container'>
+          <button
+            id='inventory-dlt-btn'
+            disabled>
+            <RiDeleteBin6Line size={30} />
+            <span>Delete Inventory</span>
+          </button>
+          <button
+            id='generate-btn'
+            disabled>
+            <BiSprayCan size={30} />
+            <span>Generate Results</span>
+          </button>
+        </div>
       )}
 
       <div id='product-scroll-container'>
