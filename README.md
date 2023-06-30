@@ -51,11 +51,11 @@
 
 ### Welcome Page
 
-<img src="https://i.imgur.com/0QNOg5q.png" alt="welcome page" width="700" />
+<img src="https://i.imgur.com/MHVKMFp.png" alt="welcome page" width="700" />
 
-#### Welcome Page Portrait & Mobile View
+#### Welcome Page Mobile View
 
-<img src="https://i.imgur.com/4fHsz5i.png" alt="welcome portrait page" height="500" /><img src="https://i.imgur.com/L28ykTQ.png" alt="welcome mobile page" height="500" />
+<img src="https://i.imgur.com/L28ykTQ.png" alt="welcome mobile page" height="500" />
 
 ### Page Navigation
 
@@ -63,7 +63,7 @@
 
 ### Instructions Page
 
-<img src="https://i.imgur.com/0CFlyFx.png" alt="instructions page" width="700" />
+<img src="https://i.imgur.com/o6AqG0i.png" alt="instructions page" width="700" />
 
 #### Instructions Page Mobile View
 
@@ -71,7 +71,7 @@
 
 ### Inventory Page
 
-<img src="https://i.imgur.com/fQQ5ImS.png" alt="inventory page" width="700" />
+<img src="https://i.imgur.com/ASGfa7z.png" alt="inventory page" width="700" />
 
 #### Inventory Page Mobile View
 
@@ -79,7 +79,7 @@
 
 ### Results Page
 
-<img src="https://i.imgur.com/9wJFpcL.png" alt="results page" width="700" />
+<img src="https://i.imgur.com/EQQtUdg.png" alt="results page" width="700" />
 
 #### Results Page Mobile View
 
