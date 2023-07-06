@@ -20,6 +20,7 @@ export default function Modal({ setModal }: Props) {
           <button
             onClick={() => {
               dispatch(change(null));
+              localStorage.setItem('local-list', JSON.stringify(''));
               setModal(false);
             }}>
             OK

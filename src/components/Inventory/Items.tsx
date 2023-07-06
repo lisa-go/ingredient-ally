@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { change } from '../../redux/slices/inventorySlice';
 import { RxCross1 } from 'react-icons/rx';
+import { useEffect } from 'react';
 
 interface Props {
   proRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -18,6 +19,14 @@ export default function Items({ proRef }: Props) {
       dispatch(change(temp));
     }
   }
+
+  useEffect(() => {
+    if (list) localStorage.setItem('local-list', JSON.stringify(list));
+  }, [list]);
+
+  useEffect(() => {
+    if (list) localStorage.setItem('local-list', JSON.stringify(list));
+  }, []);
 
   return (
     <div
