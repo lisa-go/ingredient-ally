@@ -12,12 +12,13 @@ interface InventoryState {
   process: boolean;
 }
 
+const storedList = localStorage.getItem('local-list');
+const parsedList = storedList ? JSON.parse(storedList) : null;
+
 const initialState: InventoryState = {
   list:
-    JSON.parse(localStorage.getItem('local-list') || '').length !== 0 ||
-    JSON.parse(localStorage.getItem('local-list') || '') !== null ||
-    JSON.parse(localStorage.getItem('local-list') || '') !== undefined
-      ? JSON.parse(localStorage.getItem('local-list') || '')
+    Array.isArray(parsedList) && parsedList.length > 0
+      ? parsedList
       : defaultList,
   process: false,
 };

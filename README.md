@@ -23,27 +23,37 @@
 
 # Features
 
-- Responsive Design: The application boasts a responsive design that
-  automatically adjusts to the user's screen size, ensuring that the design is
-  displayed as intended. Additionally, a mobile view has been implemented for
-  enhanced usability.
+- Responsive Design: The application features a responsive design that
+  seamlessly adapts to various screen sizes, ensuring an optimal user
+  experience. Furthermore, a dedicated mobile view has been implemented to
+  enhance usability on smaller devices.
 
-- Page Navigation: A navigation selector at the top right of the page helps
-  users easily navigate between pages. The number beside the selector displays
-  the current page number.
+- Intuitive Page Navigation: A user-friendly navigation selector positioned at
+  the top right of the page allows effortless navigation between different
+  sections. The current page number is prominently displayed, providing users
+  with clear context and orientation.
 
-- Clear Instructions: The application provides clear instructions with images on
-  an image carousel to help users understand how to use the application
-  effectively.
+- Guided Instructions: The application offers comprehensive instructions
+  accompanied by illustrative images presented in an engaging image carousel.
+  This approach empowers users to quickly grasp the functionality and maximize
+  their effectiveness when utilizing the application.
 
-- Product Management: Users can enter their skincare products on a form and
-  delete specific products from the list. They can also delete the entire
-  inventory list. A modal is implemented to prevent accidental clicking of the
-  delete button.
+- Efficient Product Management: Users can conveniently add their skincare
+  products using a simple form and selectively delete specific items from the
+  list. Additionally, an option to delete the entire inventory is available. To
+  prevent accidental deletion, a modal confirmation dialog has been implemented,
+  ensuring user confidence and preventing unintended actions.
 
-- Results Display: Users can view their results after clicking the "Generate
-  Results" button. The application shows a list of conflicting products and the
-  specific ingredient that triggered the conflict.
+- Persistent Local Storage: Leveraging local storage capabilities, the
+  application remembers the user's inventory on the device. This means that
+  users do not have to re-enter their skincare products each time they revisit
+  the application, streamlining the overall experience.
+
+- Results Display: Upon clicking the "Generate Results" button, users can
+  instantly view a comprehensive list of conflicting products. The application
+  provides clear visibility into which specific ingredient triggered the
+  conflict, allowing users to make informed decisions about their skincare
+  routine.
 
 <br><br>
 
