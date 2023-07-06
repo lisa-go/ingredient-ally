@@ -199,15 +199,6 @@ export const ingredients: iIngredient[] = [
     ],
   },
   {
-    name: 'niacinamide',
-    avoid: [
-      'vitamin c',
-      'l-ascorbic acid',
-      'ascorbic acid',
-      'ascorbyl glucoside',
-    ],
-  },
-  {
     name: 'alpha hydroxy acid',
     avoid: [
       'lactic acid',
