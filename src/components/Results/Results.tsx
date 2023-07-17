@@ -107,7 +107,7 @@ export default function Results({ resRef }: Props) {
           }
         }
       }
-      if (tempResult.length >= 1) setResult(tempResult);
+      if (tempResult.length >= 1) setResult(removeDuplicate(tempResult));
       else if (tempResult.length === 0) setResult(null);
       dispatch(completeGenerate());
     }
@@ -147,6 +147,39 @@ export default function Results({ resRef }: Props) {
       }
     }
     return true;
+  }
+
+  function removeDuplicate(arr: iResult[]) {
+    let toRemove: iResult[] = [];
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        if (j !== i) {
+          if (
+            arr[i].product1 === arr[j].product2 &&
+            arr[i].product2 === arr[j].product1
+          ) {
+            if (
+              arr[i].ingredient1.length > 1 &&
+              arr[i].ingredient1.length > arr[j].ingredient1.length
+            )
+              toRemove.push(arr[j]);
+            else if (
+              arr[j].ingredient1.length > 1 &&
+              arr[j].ingredient1.length > arr[i].ingredient1.length
+            )
+              toRemove.push(arr[i]);
+          }
+        }
+      }
+    }
+    const indexSet = Array.from(new Set(toRemove));
+
+    for (let k = 0; k < indexSet.length; k++) {
+      let indexRemove = arr.indexOf(indexSet[k]);
+      arr.splice(indexRemove, 1);
+    }
+
+    return arr;
   }
 
   return (
